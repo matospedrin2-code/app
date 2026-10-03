@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: 'Space Grotesk Variable', sans-serif;
+    --font-sans: 'Geist Variable', sans-serif;
+    --font-mono: 'JetBrains Mono Variable', monospace;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Tema permanente do HUD: obsidiana profunda com neon ciano (#00F0FF). */
+:root {
+    --background: #030712;
+    --foreground: #F8FAFC;
+    --card: #081325;
+    --card-foreground: #E2E8F0;
+    --popover: #0B1528;
+    --popover-foreground: #F1F5F9;
+    --primary: #00F0FF;
+    --primary-foreground: #030A14;
+    --secondary: #0B1B2E;
+    --secondary-foreground: #7DD3FC;
+    --muted: #0B1B2E;
+    --muted-foreground: #94A3B8;
+    --accent: #164E63;
+    --accent-foreground: #CFFAFE;
+    --destructive: #F87171;
+    --border: rgba(0, 240, 255, 0.16);
+    --input: rgba(0, 240, 255, 0.22);
+    --ring: #00F0FF;
+    --chart-1: #00F0FF;
+    --chart-2: #38BDF8;
+    --chart-3: #0EA5E9;
+    --chart-4: #155E75;
+    --chart-5: #7DD3FC;
+    --radius: 0.625rem;
+    --sidebar: #081325;
+    --sidebar-foreground: #E2E8F0;
+    --sidebar-primary: #00F0FF;
+    --sidebar-primary-foreground: #030A14;
+    --sidebar-accent: #0B1B2E;
+    --sidebar-accent-foreground: #7DD3FC;
+    --sidebar-border: rgba(0, 240, 255, 0.16);
+    --sidebar-ring: #00F0FF;
+}
+
+.dark {
+    --background: #030712;
+    --foreground: #F8FAFC;
+    --card: #081325;
+    --card-foreground: #E2E8F0;
+    --popover: #0B1528;
+    --popover-foreground: #F1F5F9;
+    --primary: #00F0FF;
+    --primary-foreground: #030A14;
+    --secondary: #0B1B2E;
+    --secondary-foreground: #7DD3FC;
+    --muted: #0B1B2E;
+    --muted-foreground: #94A3B8;
+    --accent: #164E63;
+    --accent-foreground: #CFFAFE;
+    --destructive: #F87171;
+    --border: rgba(0, 240, 255, 0.16);
+    --input: rgba(0, 240, 255, 0.22);
+    --ring: #00F0FF;
+    --chart-1: #00F0FF;
+    --chart-2: #38BDF8;
+    --chart-3: #0EA5E9;
+    --chart-4: #155E75;
+    --chart-5: #7DD3FC;
+    --sidebar: #081325;
+    --sidebar-foreground: #E2E8F0;
+    --sidebar-primary: #00F0FF;
+    --sidebar-primary-foreground: #030A14;
+    --sidebar-accent: #0B1B2E;
+    --sidebar-accent-foreground: #7DD3FC;
+    --sidebar-border: rgba(0, 240, 255, 0.16);
+    --sidebar-ring: #00F0FF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+}
+
+/* ── Motion do HUD ─────────────────────────────────────────────── */
+@keyframes nexus-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+@keyframes nexus-scan {
+    0% { top: -12%; }
+    100% { top: 112%; }
+}
+@keyframes nexus-radar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes nexus-flicker {
+    0%, 100% { opacity: 1; }
+    91% { opacity: 1; }
+    92% { opacity: 0.84; }
+    93% { opacity: 1; }
+    96.5% { opacity: 0.92; }
+    97% { opacity: 1; }
+}
+
+@layer utilities {
+    /* Malha tática de fundo (grid overlay) */
+    .hud-grid-bg {
+        background-image:
+            repeating-linear-gradient(0deg, rgba(0, 240, 255, 0.03) 0px, transparent 1px, transparent 32px),
+            repeating-linear-gradient(90deg, rgba(0, 240, 255, 0.03) 0px, transparent 1px, transparent 32px);
+    }
+    /* Scanlines CRT sutis */
+    .hud-scanlines {
+        background-image: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.28) 50%);
+        background-size: 100% 4px;
+    }
+    .hud-glow {
+        text-shadow: 0 0 12px rgba(0, 240, 255, 0.45);
+    }
+    /* Colchetes de mira nos painéis do HUD */
+    .hud-brackets {
+        position: relative;
+    }
+    .hud-brackets::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0.75rem;
+        height: 0.75rem;
+        border-top: 2px solid rgba(56, 189, 248, 0.85);
+        border-left: 2px solid rgba(56, 189, 248, 0.85);
+    }
+    .hud-brackets::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0.75rem;
+        height: 0.75rem;
+        border-bottom: 2px solid rgba(56, 189, 248, 0.85);
+        border-right: 2px solid rgba(56, 189, 248, 0.85);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hud-scanlines,
+    .hud-grid-bg {
+        display: none;
+    }
+}

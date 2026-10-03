@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "project_name": "NEXUS — Neural Executive System for Universal Support",
+  "design_archetype": "Electric Cyber-Holographic HUD & Tactile Lab Glass",
+  "locale": "pt-BR",
+  "theme_preference": "dark",
+  "typography": {
+    "font_family_heading": "'Space Grotesk Variable', sans-serif",
+    "font_family_mono": "'JetBrains Mono Variable', monospace",
+    "font_family_body": "'Geist Variable', sans-serif",
+    "imports": [
+      "@import \"@fontsource-variable/space-grotesk\";",
+      "@import \"@fontsource-variable/jetbrains-mono\";",
+      "@import \"@fontsource-variable/geist\";"
+    ],
+    "scale_px": {
+      "display": 56,
+      "h1": 40,
+      "h2": 28,
+      "h3": 20,
+      "body": 16,
+      "caption": 14
+    },
+    "typesetting_rules": {
+      "display_headings": "font-black tracking-tighter uppercase leading-none",
+      "labels_and_telemetry": "font-mono text-xs uppercase tracking-[0.25em] text-cyan-400/80",
+      "body_text": "leading-relaxed font-sans text-slate-300",
+      "ai_dialogue": "font-mono text-base md:text-lg leading-relaxed text-cyan-100 drop-shadow-[0_0_12px_rgba(0,240,255,0.35)]"
+    }
+  },
+  "colors": {
+    "accent": "#00F0FF",
+    "on_accent": "#030A14",
+    "surfaces": [
+      {
+        "name": "page",
+        "kind": "solid",
+        "bg": "#030712",
+        "on_bg": "#F8FAFC",
+        "on_bg_muted": "#94A3B8"
+      },
+      {
+        "name": "hud_panel",
+        "kind": "glass",
+        "contrast_against": "#081325",
+        "guarantee": "backdrop-blur-xl bg-slate-950/75 border border-cyan-500/30 shadow-[0_0_25px_rgba(0,240,255,0.08)]",
+        "on_bg": "#E2E8F0",
+        "on_bg_muted": "#7DD3FC",
+        "roles": {
+          "link": "#38BDF8",
+          "error": "#F87171",
+          "success": "#4ADE80",
+          "warning": "#FBBF24",
+          "telemetry_cyan": "#00F0FF"
+        }
+      },
+      {
+        "name": "orb_stage",
+        "kind": "gradient",
+        "contrast_against": "#020617",
+        "guarantee": "radial-gradient(circle at center, rgba(0,240,255,0.12) 0%, rgba(3,7,18,0.95) 75%)",
+        "on_bg": "#F0FDF4",
+        "on_bg_muted": "#67E8F9"
+      },
+      {
+        "name": "badge_neon",
+        "kind": "solid",
+        "bg": "#082F49",
+        "on_bg": "#38BDF8",
+        "on_bg_muted": "#7DD3FC"
+      },
+      {
+        "name": "command_dock",
+        "kind": "solid",
+        "bg": "#0B1528",
+        "on_bg": "#F1F5F9",
+        "on_bg_muted": "#94A3B8"
+      }
+    ]
+  },
+  "entry_surfaces": {
+    "/": "holographic HUD split — interactive reactive core orb + telemetry grid left, floating glass cards & live dialogue stream right",
+    "/auth": "biometric lockscreen — facial camera HUD reticle + wake phrase voice listener with bypass command code"
+  },
+  "visual_enhancers": {
+    "grid_overlay": "repeating-linear-gradient(0deg, rgba(0, 240, 255, 0.03) 0px, transparent 1px, transparent 32px), repeating-linear-gradient(90deg, rgba(0, 240, 255, 0.03) 0px, transparent 1px, transparent 32px)",
+    "scanlines": "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03))",
+    "corner_brackets": "before:absolute before:top-0 before:left-0 before:w-3 before:h-3 before:border-t-2 before:border-l-2 before:border-cyan-400 after:absolute after:bottom-0 after:right-0 after:w-3 after:h-3 after:border-b-2 after:border-r-2 after:border-cyan-400",
+    "glow_cyan": "drop-shadow(0 0 16px rgba(0, 240, 255, 0.6)) drop-shadow(0 0 32px rgba(0, 240, 255, 0.25))"
+  },
+  "image_urls": {
+    "hud_textures": [
+      {
+        "category": "background_texture",
+        "url": "https://images.unsplash.com/photo-1720962158937-7ea890052166?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwxfHxob2xvZ3JhcGhpYyUyMGludGVyZmFjZSUyMHNjaSUyMGZpJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3OTEwNjQ0NDB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "HUD tactical interface control panel backdrop layer with low opacity"
+      },
+      {
+        "category": "core_orb_halo",
+        "url": "https://images.unsplash.com/photo-1720962158789-9389a4f399da?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwyfHxob2xvZ3JhcGhpYyUyMGludGVyZmFjZSUyMHNjaSUyMGZpJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3OTEwNjQ0NDB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Cyan glowing concentric rings HUD overlay for facial scanner and core orb"
+      }
+    ]
+  },
+  "core_components": {
+    "ReactiveOrbCanvas": {
+      "path": "frontend/src/components/nexus/ReactiveOrbCanvas.tsx",
+      "description": "HTML5 Canvas rendering multi-layered particle waveform orb in neon cyan (#00F0FF). Scales dynamically (1.0x to 1.45x) and increases particle velocity and turbulence when Web Speech API / TTS audio plays or user speaks."
+    },
+    "FaceScannerModal": {
+      "path": "frontend/src/components/nexus/FaceScannerModal.tsx",
+      "description": "HUD biometric lock screen. Accesses getUserMedia, renders targeting brackets, scanline sweep, neural mesh overlay, sends frame verification to Gemini Vision simulation or test bypass, emits [FACE_VERIFIED: TRUE]."
+    },
+    "VoiceWakeController": {
+      "path": "frontend/src/components/nexus/VoiceWakeController.tsx",
+      "description": "Web Speech API / SpeechRecognition listener for 'NEXUS, bom dia' and follow-up prompts. Includes visual soundwave indicator, microphone toggle, and manual prompt input fallback."
+    },
+    "FloatingCardStream": {
+      "path": "frontend/src/components/nexus/FloatingCardStream.tsx",
+      "description": "Staggered glassmorphic animated cards appearing sequentially based on Gemini tags: [CARD_CLIMA] (Novorizonte-MG), [CARD_AGENDA] (Daily schedule/reminders), [CARD_EMAILS] (VIP messages), [CARD_NOTICIAS] (G1/BBC filtered: Saúde, LGBTQIA+, Política, Tecnologia), [CARD_SAUDE] (Biometrics & hydration metrics)."
+    },
+    "NexusDialogueFeed": {
+      "path": "frontend/src/components/nexus/NexusDialogueFeed.tsx",
+      "description": "Terminal stream displaying NEXUS speech transcripts with typewriter effect, polite tone addressing the user as 'Senhor', subtle witty sarcasm, and Web Speech Synthesis (SpeechSynthesisUtterance) voice output in Portuguese."
+    },
+    "MemoryTimelineDrawer": {
+      "path": "frontend/src/components/nexus/MemoryTimelineDrawer.tsx",
+      "description": "Persistent briefing archive and memory log powered by MongoDB. Allows querying past briefings, system logs, and executive summary transcripts."
+    }
+  },
+  "layouts": {
+    "grid_mode": "HUD Command Center (Asymmetric 12-Column Desktop Grid)",
+    "desktop_composition": {
+      "left_column": "col-span-12 lg:col-span-5 flex flex-col items-center justify-between p-6 border-r border-cyan-500/20 relative",
+      "right_column": "col-span-12 lg:col-span-7 flex flex-col p-6 space-y-6 overflow-y-auto max-h-[calc(100vh-80px)]",
+      "header_hud": "h-16 border-b border-cyan-500/20 px-6 flex items-center justify-between backdrop-blur-xl bg-slate-950/80 sticky top-0 z-50",
+      "bottom_dock": "h-20 border-t border-cyan-500/20 px-6 flex items-center justify-between backdrop-blur-xl bg-slate-950/90 sticky bottom-0 z-40"
+    }
+  },
+  "motion": {
+    "reduced_motion": "Respect prefers-reduced-motion: disable particle turbulence and orbital rotation, fall back to smooth opacity fades",
+    "animations": {
+      "orb_idle_pulse": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      "card_stagger_entrance": "motion.div with opacity: 0 -> 1, y: 30 -> 0, transition: { duration: 0.45, ease: 'easeOut' }",
+      "radar_sweep": "rotate 4s linear infinite",
+      "hud_glitch_flash": "opacity variations between 0.92 and 1.0 on new system messages"
+    }
+  },
+  "accessibility": {
+    "wcag_compliance": "WCAG AA / APCA standards met. Text on glass surfaces uses dark underlays (bg-slate-950/75+) ensuring > 4.5:1 contrast against cyan-100/slate-200 text",
+    "aria_labels": "All HUD buttons, camera inputs, audio synthesizers, and modal switches have explicit aria-label and role attributes",
+    "keyboard_navigation": "Full tab index support and shortcut hotkeys (e.g. Space to speak, 'B' for briefing, 'M' for memory drawer, 'Esc' to dismiss)"
+  },
+  "instructions_to_main_agent": [
+    "Mount the dark holographic interface in /app/frontend/src/App.tsx with route paths: '/' (Main HUD command center), '/auth' (Biometric Face Lockscreen), '/timeline' (Memory archives), '/settings' (API & Voice controls).",
+    "Ensure dark mode is permanent by having class='dark' on <html> in index.html, with deep obsidian background #030712.",
+    "Implement the Brazilian Portuguese conversational persona: NEXUS must always address the user respectfully as 'Senhor', maintain a calm, refined, subtly witty tone, and generate crisp spoken summaries.",
+    "Support live live Web Speech API recognition (with graceful fallback to typed command) and Web Speech Synthesis in pt-BR.",
+    "Connect Gemini 2.5 Flash via FastAPI backend for synthesizing RSS news (Saúde, LGBTQIA+, Política, Tecnologia), Novorizonte-MG weather, and financial quotes, returning the exact tagged protocol format: [FACE_VERIFIED: TRUE], [CARD_CLIMA], [CARD_AGENDA], [CARD_EMAILS], [CARD_NOTICIAS], [CARD_SAUDE].",
+    "Persist all conversations and briefing events to MongoDB via Motor async queries in backend/lib/db.py.",
+    "Assign role-based data-testid attributes to all buttons, mic controls, dialogue texts, and cards for automated testing."
+  ],
+  "testing_attributes": {
+    "wake_button": "nexus-wake-mic-btn",
+    "face_scan_trigger": "nexus-scan-face-btn",
+    "dialogue_stream": "nexus-dialogue-output",
+    "card_clima": "nexus-card-clima",
+    "card_agenda": "nexus-card-agenda",
+    "card_emails": "nexus-card-emails",
+    "card_noticias": "nexus-card-noticias",
+    "card_saude": "nexus-card-saude",
+    "memory_drawer_btn": "nexus-open-memory-btn",
+    "command_input": "nexus-command-input",
+    "command_submit": "nexus-command-submit-btn"
+  }
+}
